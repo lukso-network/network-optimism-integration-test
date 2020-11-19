@@ -8,13 +8,20 @@ optimism system.
 
 ```bash
 # Git clone with submodules
-$ git clone git@github.com:ethereum-optimism/optimism-integration.git --recurse-submodules
+$ git clone git@github.com:lukso-network/optimism-integration.git --recurse-submodules
 
 # The `docker` submodule is a one stop shop for building containers
 $ ./docker/build.sh
 
 # Run tests
 $ ./test.sh
+
+# Run full environment
+$ ./up.sh
+
+OR
+
+$ docker-compose up -d
 ```
 
 Submodules are updated automatically as commits land in `master`.
@@ -37,3 +44,8 @@ These test suites cannot currently be ran in parallel, so if `PKGS` contains
 multiple packages delimated by a comma, the results will be non-deterministic
 and the tests should fail.
 
+### up.sh
+
+Bash script runs the containers / services without the integration tests.
+- The `-s` flag takes a string of services to run.
+- The `-l` flag will use mounted code.
